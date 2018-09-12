@@ -29,7 +29,7 @@ namespace dotnet_code_challenge
             Console.ReadKey();
         }
 
-        private static IEnumerable<Horse> GetHorsesInOrder()
+        public static IEnumerable<Horse> GetHorsesInOrder()
         {
             return WolferHamptonRepo.GetHorses().OrderBy(h => h.Price);
         }
