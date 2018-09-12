@@ -16,5 +16,20 @@ namespace dotnet_code_challenge.Test.Repository
 
             Assert.Equal(expectedNumberOfHorses, actualNumberOfHorses);
         }
+
+        [Fact]
+        public void GivenWolferhamptonRepositoryWithTwoHorses_WhenRetrievalOfHorses_ThenShouldSucceedWithExpectedHorseIds()
+        {
+            // arrange, act, assert
+            var repo = CreateWolferhamptonRepository();
+            var expectedFirstHorseId = "1";
+            var expectedSecondHorseId = "2";
+
+            var actualFirstHorseId = repo.GetHorses().First().Id;
+            var actualSecondHorseId = repo.GetHorses().Last().Id;
+
+            Assert.Equal(expectedFirstHorseId, actualFirstHorseId);
+            Assert.Equal(expectedSecondHorseId, actualSecondHorseId);
+        }
     }
 }
