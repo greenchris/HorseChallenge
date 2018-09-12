@@ -35,7 +35,16 @@ namespace dotnet_code_challenge.DataAccess
                     ParticipantId = (string)s["Tags"]["participant"]
                 }).ToArray();
 
-
+                // project horses based on the extracted 'particpant' and 'market selection' data
+                horses = from p in ((JArray)participants)
+                         join ms in marketSelections on (string)p["Id"] equals ms.ParticipantId
+                         select new Horse
+                         {
+                             Id = (string)p["Id"],
+                             Name = (string)p["Name"],
+                             Num = (string)p["Tags"]["Number"],
+                             Price = ms.Price
+                         };
             }
 
             return horses;
