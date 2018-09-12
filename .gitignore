@@ -1,0 +1,25 @@
+bin/
+obj/
+Debug/
+Release/
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+
+*.props
+*.cache
+*.dll
+*.exe
+*.pdb
+/build/
+*.suo
+*.user
+_ReSharper.*/
+*.sdf
+*.opensdf
+*.tlog
+*.log
