@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using dotnet_code_challenge.Model;
 
 namespace dotnet_code_challenge.DataAccess
@@ -15,8 +17,9 @@ namespace dotnet_code_challenge.DataAccess
         public IEnumerable<Horse> LoadWolferHamptonHorses()
         {
             var horses = Enumerable.Empty<Horse>();
+            var jsonString = File.ReadAllText(filePath);
+            dynamic data = JsonConvert.DeserializeObject<dynamic>(jsonString);
 
-            // TODO - do stuff!!
 
             return horses;
         }
