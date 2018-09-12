@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using dotnet_code_challenge.Repository;
 
 namespace dotnet_code_challenge
 {
@@ -9,11 +11,19 @@ namespace dotnet_code_challenge
         /// </summary>
         static void Main(string[] args)
         {
-            // create instance of repos
+            // create horse race repos
+            var wolferHamptonRepo = new WolferhamptonRaceRepository();
 
-            // retrieve the horses, merge them and order
+            // retrieve the horses, and order them by price ascending
+            var horses = wolferHamptonRepo.GetHorses().OrderBy(h => h.Price);
 
             // output the horse names in the console
+            Console.WriteLine("Horses Names in Price ascending Order:\n");
+
+            foreach (var horse in horses)
+            {
+                Console.WriteLine(horse.Name);
+            }
 
             Console.ReadKey();
         }
