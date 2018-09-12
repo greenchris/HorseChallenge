@@ -22,7 +22,7 @@ namespace dotnet_code_challenge.DataAccess
             dynamic data = JsonConvert.DeserializeObject<dynamic>(jsonString);
             var rawData = data["RawData"];
 
-            var participants = rawData["Participants"];
+            var participants = (JArray)rawData["Participants"];
             if (participants != null)
             {
                 var markets = rawData["Markets"];
@@ -36,7 +36,7 @@ namespace dotnet_code_challenge.DataAccess
                 }).ToArray();
 
                 // project horses based on the extracted 'particpant' and 'market selection' data
-                horses = from p in ((JArray)participants)
+                horses = from p in participants
                          join ms in marketSelections on (string)p["Id"] equals ms.ParticipantId
                          select new Horse
                          {
